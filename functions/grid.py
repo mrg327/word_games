@@ -81,36 +81,37 @@ def word_paths(grid, solutions):
     return paths
 
 def find_word_path(grid, word):
-    '''Finds the word in the grid and returns the word and the path.'''
+    '''This function will return the path for the word.'''
+    path = []
     for row in range(len(grid)):
         for col in range(len(grid[row])):
-            path = search_path(grid, word, row, col)
-            if path:
-                return (word, path)
-    return (word, [])
+            if search_path(grid, word, row, col, path):
+                return path
+    return path
 
-def search_path(grid, word, row, col):
-    '''Searches the grid for the word and returns the path if found, [] otherwise.'''
+def search_path(grid, word, row, col, path):
+    '''This function will search the grid for the word and return the path.'''
     if len(word) == 0: # All characters found
-        return []
+        return True
     if row < 0 or row >= len(grid) or col < 0 or col >= len(grid[row]) or grid[row][col] != word[0]:
-        return []
+        return False
     temp = grid[row][col] # Remember the letter
     grid[row][col] = '.' # Mark as visited
-    path = [(row, col)]
-    result = search_path(grid, word[1:], row-1, col-1) or \
-             search_path(grid, word[1:], row-1, col) or \
-             search_path(grid, word[1:], row-1, col+1) or \
-             search_path(grid, word[1:], row, col-1) or \
-             search_path(grid, word[1:], row, col+1) or \
-             search_path(grid, word[1:], row+1, col-1) or \
-             search_path(grid, word[1:], row+1, col) or \
-             search_path(grid, word[1:], row+1, col+1)
+    path.append((row, col))
+
+    result = search_path(grid, word[1:], row-1, col-1, path) or \
+             search_path(grid, word[1:], row-1, col, path) or \
+             search_path(grid, word[1:], row-1, col+1, path) or \
+             search_path(grid, word[1:], row, col-1, path) or \
+             search_path(grid, word[1:], row, col+1, path) or \
+             search_path(grid, word[1:], row+1, col-1, path) or \
+             search_path(grid, word[1:], row+1, col, path) or \
+             search_path(grid, word[1:], row+1, col+1, path)
     
     grid[row][col] = temp # Restore the letter
-    if result:
-        path.extend(result)
-    return path
+    if not result:
+        path.pop()
+    return result
 
 def main():
     '''Main function.'''
