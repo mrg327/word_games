@@ -7,6 +7,10 @@
     
 }
 
+#form-button {
+    display: flex;
+}
+
 #input {
     display: flex;
     flex-wrap: wrap;
@@ -45,19 +49,30 @@
 
 }
 
+#form {
+    margin-right: 0px;
+    flex: auto;
+}
+
   #container{
     display: flex;
   }
 
   #grid{
-    flex: min-content;
+    flex: 30%;
   }
 
   #solutions{
-    flex: max-content;
+    flex: 70%;
   }
 
   #button{
     width: 100px;
     height: 50px;
+    flex: 25%;
+    margin-top: 23px;
+  }
+
+  #input {
+    margin-top: 5px;
   }

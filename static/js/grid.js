@@ -37,6 +37,13 @@ form.addEventListener("input", event => {
     
 });
 
+// listen for hte form to be submitted
+form.addEventListener("submit", event => {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+    drawGrid(form);
+});
+
 // create a function to draw the grid and fatch the solutions
 function drawGrid(form) {
         // Get the input string from the form
@@ -101,6 +108,8 @@ function drawGrid(form) {
         console.log(gridHTML);
         // Update the grid HTML
         grid.innerHTML = gridHTML;
+
+        // update the flex of the grid to the size of the grid
     
         // print grid to console
         console.log(grid);
