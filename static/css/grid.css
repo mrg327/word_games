@@ -1,0 +1,58 @@
+#grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    width: min-content;
+    
+}
+
+#input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    width: 600px;
+    height: 50px;
+    text-align: center;
+    font-size: 40px;
+    
+}
+
+.row {
+    display: flex;
+    width: min-content;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border: 1px solid black;
+    font-size: 60px;
+}
+
+.sol-list {
+    column-count: 6;
+    list-style-type: none;
+    height: auto;
+  }
+
+.sol-item {
+    font-size: 20px;
+
+}
+
+  #container{
+    display: flex;
+  }
+
+  #grid{
+    flex: min-content;
+  }
+
+  #solutions{
+    flex: max-content;
+  }

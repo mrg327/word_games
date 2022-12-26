@@ -1,0 +1,28 @@
+<!-- HTML for the input form -->
+<form id="form">
+    <label for="input">Enter a string (Test String: manqwertyuiopasd):</label><br>
+    <input type="text" id="input" name="input"><br>
+    <!--
+    <input type="submit" value="Submit">
+    -->
+  </form>
+  
+  <!-- CSS to style the grid -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/grid.css') }}">
+  <div id="container"> 
+  <!-- HTML for the grid -->
+  <div id="grid">
+    <!-- The grid will be generated dynamically using JavaScript -->
+  </div>
+
+  <!-- HTML for the list of solutions -->
+    <div id="solutions">
+        <!-- The list of solutions will be generated dynamically using JavaScript -->
+    </div>
+</div>
+  
+  <!-- JavaScript to generate the grid based on the input string -->
+  <script src="{{ url_for('static', filename='js/grid.js') }}"></script>
+
+  
+  
