@@ -1,11 +1,15 @@
 // Get the input form and grid elements
 const form = document.getElementById("form");
+const indexForm = document.getElementById("idx-form");
 const button = document.getElementById("button");
+const arrowButton = document.getElementById("arrow-button");
 const grid = document.getElementById("grid");
 let solutions = document.getElementById("solutions");
 
 let timeoutId;
 let t_inp_str = "";
+let t_idx = -1;
+let arrows_present = false;
 
 const arrow_dirs = ["nw", "n", "ne", "e", "se", "s", "sw", "w"];
 
@@ -19,6 +23,41 @@ button.addEventListener("click", event => {
     clearTimeout(timeoutId);
     // Draw the grid
     drawGrid(form);
+});
+
+arrowButton.addEventListener("click", event => {
+    // get the input from the index form
+    const userIdx = indexForm.elements.idx.value;
+    console.log(userIdx);
+    // write the arrows for the test index if data exists
+    if (window.data){
+    addArrows(window.data, userIdx - 1);}
+});
+
+// add a listener for the right arrow key
+document.addEventListener("keydown", event => {
+    // if the right arrow key is pressed
+    if (event.keyCode == 39) {
+        // get the t_idx and add 1
+        const userIdx = t_idx + 1;
+        // write the arrows for the test index if data exists
+        if (window.data){
+        addArrows(window.data, userIdx);}
+    }
+    // if the left arrow key is pressed
+    if (event.keyCode == 37) {
+        // get the t_idx and subtract 1
+        const userIdx = t_idx - 1;
+        // write the arrows for the test index if data exists
+        if (window.data){
+        addArrows(window.data, userIdx);}
+    }
+    // if the down arrow key is pressed
+    if (event.keyCode == 40) {
+        // clear the arrows
+        refresh();
+    }
+    console.log(userIdx);
 });
 
 // Add an event listener to the form to handle the submission
@@ -69,13 +108,15 @@ function drawGrid(form) {
             // generate HTML for the list of solutions
             let solutionsHTML = "<ul class='sol-list'>";
             for (let i = 0; i < data.found_words.length; i++) {
-                solutionsHTML += `<li class='sol-item'>${i+1}. ${data.paths[i][0]}</li>`;
+                solutionsHTML += `<li class='sol-item'>${i+1}. ${data.found_words[i]}</li>`;
             }
             solutionsHTML += "</ul>";
             // Update the solutions HTML
             solutions.innerHTML = solutionsHTML;
             // log the solutions to the console
             console.log(solutions);
+            // persist the data
+            window.data = data;
     
           })
           .catch(error => {
@@ -101,7 +142,7 @@ function drawGrid(form) {
             gridHTML += `<div class='cell' id='cell_${cell_id}'>`
             // add if statement for checkered styling
             // if (i % 2 == 0 && j % 2 == 0 || i % 2 != 0 && j % 2 != 0) gridHTML += ` style='background-color: #f2f2f2;'`;
-            gridHTML += `<div id='overlay-text'>${letter}</div> <div class="arrow-nw"></div></div>`;
+            gridHTML += `<div id='overlay-text'>${letter}</div> <div id="arrow-${cell_id}"></div></div>`;
             cell_id += 1;
         }
         gridHTML += "</div>";
@@ -115,5 +156,51 @@ function drawGrid(form) {
     
         // print grid to console
         console.log(grid);
+
+        refresh();
         };
     };    
+
+function refresh(){
+    for (let i = 0; i < 16; i++) {
+        // get the cell id
+        let cell_id = i;
+        // set the class back to only the cell class
+        document.getElementById(`arrow-${cell_id}`).className = "";
+        // set the background color back to --background-color
+        document.getElementById(`cell_${cell_id}`).style.backgroundColor = "var(--background-color)";
+    }
+}
+
+
+    // write a function to add the arrow classes to the cells
+function addArrows(data, word_idx) {
+    // if (arrows_present) {
+    // iterate over the cells and set all opacities to 0
+    refresh()
+    // arrows_present = false;}
+    // else{
+    // for each subarray in the paths array
+    for (let i = 0; i < data.paths[word_idx].length; i++) {
+        // if i == length - 1
+        if (i == data.paths[word_idx].length -1) document.getElementById(`cell_${data.paths[word_idx][data.paths[word_idx].length -1][1]}`).style.backgroundColor = "#d4777b";
+        else document.getElementById(`cell_${data.paths[word_idx][i][1]}`).style.backgroundColor = "#a6c1f7";
+        // if i = 0
+        if (i == 0) document.getElementById(`cell_${data.paths[word_idx][0][1]}`).style.backgroundColor = "#77d477";
+        // get the cell id
+        let cell_id = data.paths[word_idx][i][1];
+        // get the direction
+        let dir = data.paths[word_idx][i][0];
+        // add the arrow class to the cell
+        document.getElementById(`arrow-${cell_id}`).classList.add(`arrow-${dir}`);
+        // set the opacity of the cell to 1
+        document.getElementById(`arrow-${cell_id}`).style.opacity = 1;
+        arrows_present = true;
+}
+// color the first and last cells
+t_idx = word_idx;
+// }
+
+// update the current-sol h1 to the current solution
+document.getElementById("current-sol").innerHTML = `Current Solution: ${data.found_words[word_idx]}`;
+};

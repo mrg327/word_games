@@ -5,8 +5,8 @@
     --accent-color: #008080;
     --background-color: #E6E6FA;
     --accent-opacity: 0.5;
-    --arrow-size: 10px;
-    --arrow-color: black;
+    --arrow-size: 20px;
+    --arrow-color: #ada4ed;
 }
 
 #grid {
@@ -28,6 +28,25 @@
     justify-content: center;
     margin: auto;
     width: 600px;
+    height: 50px;
+    text-align: center;
+    font-size: 40px;
+    
+}
+
+#current-sol {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    position: relative;
+}
+
+#idx-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    width: 100px;
     height: 50px;
     text-align: center;
     font-size: 40px;
@@ -164,7 +183,7 @@
     border: 1px solid black;
     font-size: 60px;
     color: #00000000;
-    background-color: var(--background-color);
+    /* background-color: var(--background-color); */
     position: relative;
 }
 
@@ -195,6 +214,10 @@
     margin-right: 0px;
     flex: auto;
 }
+#idx-form {
+    margin-right: 0px;
+    flex: auto;
+}
 
   #container{
     display: flex;
@@ -211,10 +234,19 @@
   #button{
     width: 100px;
     height: 50px;
-    flex: 25%;
+    flex: 12%;
+    margin-top: 23px;
+  }
+  #arrow-button{
+    width: 100px;
+    height: 50px;
+    flex: 12%;
     margin-top: 23px;
   }
 
   #input {
+    margin-top: 5px;
+  }
+  #idx-input {
     margin-top: 5px;
   }

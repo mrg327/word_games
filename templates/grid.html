@@ -8,6 +8,15 @@
   <button id="button">Input Test String</button>
 </div>
 
+<div id="form-button">
+<form id="idx-form">
+    <label for="input">Enter a word to find the solution for:</label><br>
+    <h1 id="current-sol"></h1>
+    <input type="text" id="idx-input" name="idx"><br>
+    <!-- <input type="submit" value="Submit"> -->
+  </form>
+  <button id="arrow-button">Test Arrows</button>
+</div>
 
   <!-- CSS to style the grid -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/grid.css') }}">
