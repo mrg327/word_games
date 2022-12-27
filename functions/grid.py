@@ -14,6 +14,8 @@ The game solver will return a list of all words found in the grid in order of le
 
 '''
 
+
+
 def read_words():
     '''Reads the words from the file and returns a list of words.'''
     with open("functions/all_words.txt", "r", encoding='latin-1') as f:
