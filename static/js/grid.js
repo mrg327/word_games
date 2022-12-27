@@ -7,6 +7,8 @@ let solutions = document.getElementById("solutions");
 let timeoutId;
 let t_inp_str = "";
 
+const arrow_dirs = ["nw", "n", "ne", "e", "se", "s", "sw", "w"];
+
 // Add an event listener to the form to handle the submission
 // q: what even listener do I use for a button?
 // a: use the click event listener
@@ -67,7 +69,7 @@ function drawGrid(form) {
             // generate HTML for the list of solutions
             let solutionsHTML = "<ul class='sol-list'>";
             for (let i = 0; i < data.found_words.length; i++) {
-                solutionsHTML += `<li class='sol-item'>${i+1}. ${data.found_words[i]}</li>`;
+                solutionsHTML += `<li class='sol-item'>${i+1}. ${data.paths[i][0]}</li>`;
             }
             solutionsHTML += "</ul>";
             // Update the solutions HTML
@@ -96,10 +98,10 @@ function drawGrid(form) {
         for (let j = 0; j < gridSize; j++) {
             const index = i * gridSize + j;
             const letter = input[index] || "";
-            gridHTML += `<div class='cell' id='cell_${cell_id}'`
+            gridHTML += `<div class='cell' id='cell_${cell_id}'>`
             // add if statement for checkered styling
             // if (i % 2 == 0 && j % 2 == 0 || i % 2 != 0 && j % 2 != 0) gridHTML += ` style='background-color: #f2f2f2;'`;
-            gridHTML += `>${letter}</div>`;
+            gridHTML += `<div id='overlay-text'>${letter}</div> <div class="arrow-nw"></div></div>`;
             cell_id += 1;
         }
         gridHTML += "</div>";
