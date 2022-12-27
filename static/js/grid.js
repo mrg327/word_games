@@ -18,7 +18,7 @@ const arrow_dirs = ["nw", "n", "ne", "e", "se", "s", "sw", "w"];
 // a: use the click event listener
 button.addEventListener("click", event => {
     // Copy the test string to the form input
-    form.elements.input.value = "manqwertyuiopasd";
+    form.elements.input.value = "sershpctlanhpmia";
     // Clear any existing timeout
     clearTimeout(timeoutId);
     // Draw the grid
@@ -85,6 +85,18 @@ form.addEventListener("submit", event => {
     drawGrid(form);
 });
 
+// listen for hte form to be submitted
+indexForm.addEventListener("submit", event => {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    const userIdx = indexForm.elements.idx.value;
+    console.log(userIdx);
+    // write the arrows for the test index if data exists
+    if (window.data){
+    addArrows(window.data, userIdx - 1);}
+});
+
 // create a function to draw the grid and fatch the solutions
 function drawGrid(form) {
         // Get the input string from the form
@@ -93,6 +105,9 @@ function drawGrid(form) {
         // do the following code only if the input length has an integer square root
         if (Number.isInteger(Math.sqrt(form_input.length)) && (form_input != t_inp_str) && (form_input.length > 0)){
         t_inp_str = form_input;
+        // verify that the input string is valid
+
+
         // Send the input string to the server using an AJAX request
         fetch("/solve_game", {
           method: "POST",
