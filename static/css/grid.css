@@ -1,3 +1,14 @@
+:root{
+    /*teal color hex: 
+    #008080
+    */
+    --accent-color: #008080;
+    --background-color: #E6E6FA;
+    --accent-opacity: 0.5;
+    --arrow-size: 20px;
+    --arrow-color: black;
+}
+
 #grid {
     display: flex;
     flex-wrap: wrap;
@@ -5,6 +16,10 @@
     margin: auto;
     width: min-content;
     
+}
+
+#form-button {
+    display: flex;
 }
 
 #input {
@@ -19,9 +34,144 @@
     
 }
 
+#current-sol {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    position: relative;
+}
+
+#idx-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    font-size: 40px;
+    
+}
+
 .row {
     display: flex;
     width: min-content;
+}
+
+.arrow-s {
+    border-left: var(--arrow-size) solid transparent;
+    border-right: var(--arrow-size) solid transparent;
+    border-top: var(--arrow-size) solid var(--arrow-color);
+    height: 0; 
+    width: 0; 
+    z-index: 0;
+    margin: 5px;
+    transform: rotate(0deg);
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+  }
+
+.arrow-n {
+    border-left: var(--arrow-size) solid transparent;
+    border-right: var(--arrow-size) solid transparent;
+    border-top: var(--arrow-size) solid var(--arrow-color);
+    height: 0; 
+    width: 0; 
+    z-index: 0;
+    margin: 5px;
+    transform: rotate(180deg);
+    position: absolute;
+    top: 0;
+    opacity: 0;
+  }
+
+.arrow-e {
+    border-left: var(--arrow-size) solid transparent;
+    border-right: var(--arrow-size) solid transparent;
+    border-top: var(--arrow-size) solid var(--arrow-color);
+    height: 0; 
+    width: 0; 
+    z-index: 0;
+    margin: 5px;
+    transform: rotate(270deg);
+    position: absolute;
+    right: 0;
+    opacity: 0;
+  }
+
+.arrow-w {
+    border-left: var(--arrow-size) solid transparent;
+    border-right: var(--arrow-size) solid transparent;
+    border-top: var(--arrow-size) solid var(--arrow-color);
+    height: 0; 
+    width: 0; 
+    z-index: 0;
+    margin: 5px;
+    transform: rotate(90deg);
+    position: absolute;
+    left: 0;
+    opacity: 0;
+  }
+
+.arrow-ne{
+    border-left: var(--arrow-size) solid transparent;
+    border-right: var(--arrow-size) solid transparent;
+    border-top: var(--arrow-size) solid var(--arrow-color);
+    height: 0; 
+    width: 0; 
+    z-index: 0;
+    margin: 5px;
+    transform: rotate(225deg);
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+}
+
+.arrow-se{
+    border-left: var(--arrow-size) solid transparent;
+    border-right: var(--arrow-size) solid transparent;
+    border-top: var(--arrow-size) solid var(--arrow-color);
+    height: 0; 
+    width: 0; 
+    z-index: 0;
+    margin: 5px;
+    transform: rotate(315deg);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+}
+
+.arrow-sw{
+    border-left: var(--arrow-size) solid transparent;
+    border-right: var(--arrow-size) solid transparent;
+    border-top: var(--arrow-size) solid var(--arrow-color);
+    height: 0; 
+    width: 0; 
+    z-index: 0;
+    margin: 5px;
+    transform: rotate(45deg);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.arrow-nw{
+    border-left: var(--arrow-size) solid transparent;
+    border-right: var(--arrow-size) solid transparent;
+    border-top: var(--arrow-size) solid var(--arrow-color);
+    height: 0; 
+    width: 0; 
+    z-index: 0;
+    margin: 5px;
+    transform: rotate(135deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
 }
 
 .cell {
@@ -32,6 +182,21 @@
     height: 120px;
     border: 1px solid black;
     font-size: 60px;
+    color: #00000000;
+    background-color: var(--background-color);
+    position: relative;
+}
+
+#overlay-text {
+  color: #000000;
+  font-size: 60px;
+  left: 0; /* position the text at the left of the parent element */
+  position: absolute; /* position the text absolutely */
+  top: 25px; /* position the text at the top of the parent element */
+  left: 37px;
+  z-index: 1; /* place the text in front of the child element */
+  
+  
 }
 
 .sol-list {
@@ -45,14 +210,43 @@
 
 }
 
+#form {
+    margin-right: 0px;
+    flex: auto;
+}
+#idx-form {
+    margin-right: 0px;
+    flex: auto;
+}
+
   #container{
     display: flex;
   }
 
   #grid{
-    flex: min-content;
+    flex: 30%;
   }
 
   #solutions{
-    flex: max-content;
+    flex: 70%;
+  }
+
+  #button{
+    width: 100px;
+    height: 50px;
+    flex: 12%;
+    margin-top: 23px;
+  }
+  #arrow-button{
+    width: 100px;
+    height: 50px;
+    flex: 12%;
+    margin-top: 23px;
+  }
+
+  #input {
+    margin-top: 5px;
+  }
+  #idx-input {
+    margin-top: 5px;
   }

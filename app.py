@@ -16,6 +16,7 @@ def grid():
 @app.route('/solve_game', methods=['POST'])
 def solve_game():
     input_str = request.json['input']
+    # parse the input string for malwares
     found_words, paths = complete_solve_game(input_str)
     return {'found_words': found_words, 'paths': paths}
 
