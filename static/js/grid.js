@@ -11,8 +11,6 @@ let t_inp_str = "";
 let t_idx = -1;
 let arrows_present = false;
 
-const arrow_dirs = ["nw", "n", "ne", "e", "se", "s", "sw", "w"];
-
 // Add an event listener to the form to handle the submission
 // q: what even listener do I use for a button?
 // a: use the click event listener

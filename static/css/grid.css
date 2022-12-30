@@ -7,6 +7,7 @@
     --accent-opacity: 0.5;
     --arrow-size: 20px;
     --arrow-color: black;
+    --cell-dim: 120px;
 }
 
 #grid {
@@ -178,8 +179,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 120px;
-    height: 120px;
+    width: var(--cell-dim);
+    height: var(--cell-dim);
     border: 1px solid black;
     font-size: 60px;
     color: #00000000;
