@@ -190,11 +190,8 @@
 
 #overlay-text {
   color: #000000;
-  font-size: 60px;
-  left: 0; /* position the text at the left of the parent element */
+  font-size: calc(100%);
   position: absolute; /* position the text absolutely */
-  top: 25px; /* position the text at the top of the parent element */
-  left: 37px;
   z-index: 1; /* place the text in front of the child element */
   
   
