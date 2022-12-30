@@ -4,8 +4,8 @@ const indexForm = document.getElementById("idx-form");
 const button = document.getElementById("button");
 const arrowButton = document.getElementById("arrow-button");
 const grid = document.getElementById("grid");
-let solutions = document.getElementById("solutions");
 
+let solutions = document.getElementById("solutions");
 let timeoutId;
 let t_inp_str = "";
 let t_idx = -1;
@@ -23,6 +23,8 @@ button.addEventListener("click", event => {
     clearTimeout(timeoutId);
     // Draw the grid
     drawGrid(form);
+    // refresh the page
+    refresh();
 });
 
 arrowButton.addEventListener("click", event => {
@@ -40,6 +42,8 @@ document.addEventListener("keydown", event => {
     if (event.keyCode == 39) {
         // get the t_idx and add 1
         const userIdx = t_idx + 1;
+        // set the id-form idx value
+        indexForm.elements.idx.value = userIdx + 1;
         // write the arrows for the test index if data exists
         if (window.data){
         addArrows(window.data, userIdx);}
@@ -48,6 +52,8 @@ document.addEventListener("keydown", event => {
     if (event.keyCode == 37) {
         // get the t_idx and subtract 1
         const userIdx = t_idx - 1;
+        // set the id-form idx value
+        indexForm.elements.idx.value = userIdx + 1;
         // write the arrows for the test index if data exists
         if (window.data){
         addArrows(window.data, userIdx);}
@@ -56,6 +62,10 @@ document.addEventListener("keydown", event => {
     if (event.keyCode == 40) {
         // clear the arrows
         refresh();
+        // set the user index to 0
+        indexForm.elements.idx.value = 0;
+        // set the test index to -1
+        t_idx = -1;
     }
     console.log(userIdx);
 });
@@ -132,6 +142,8 @@ function drawGrid(form) {
             console.log(solutions);
             // persist the data
             window.data = data;
+            // persist the form input
+            window.form_input = form_input;
     
           })
           .catch(error => {
@@ -172,12 +184,12 @@ function drawGrid(form) {
         // print grid to console
         console.log(grid);
 
-        refresh();
         };
     };    
 
 function refresh(){
-    for (let i = 0; i < 16; i++) {
+    // iterate over the cells and set all opacities to 0
+    for (let i = 0; i < window.form_input.length; i++) {
         // get the cell id
         let cell_id = i;
         // set the class back to only the cell class
