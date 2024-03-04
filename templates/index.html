@@ -2,10 +2,13 @@
 <html>
   <head>
     <title>My Flask App</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
   </head>
   <body>
-    <h1>Hello, World!</h1>
+  <div class ="container">
+	  <h1>Welcome to the Word Game Solver!</h1>
+	  <a href="grid"><h1>Word Grid Solver</h1></a>
+  </div>
     <!-- <img src="{{ url_for('static', filename='image.jpg') }}" alt="An image"> -->
   </body>
 </html>

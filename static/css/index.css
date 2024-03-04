@@ -1,0 +1,17 @@
+body {
+  background: #6e28d9;
+  padding: 0 24px;
+  margin: 0;
+  height: 100vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+} 
+
+.container {
+    display: grid;
+    grid-template-rows: auto auto auto; /* Creates three rows */
+    align-items: center;
+  }
