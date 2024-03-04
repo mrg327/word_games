@@ -12,10 +12,10 @@ This project is a script that solves a 2D word game. The game is played on a squ
 
 ## How to Use
 
-1. Run the script.
-2. Enter the game board as a string.
-3. The script will return a list of all the words found in the grid in order of length, with the longest words listed first.
+The website is hosted on GitHub pages, visit the link to access the website.
 
 ## Requirements
 
 Python 3
+Flask
+gunicorn

@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
 from functions.grid import *
+from flask_frozen import Freezer
 
 app = Flask(__name__)
+freezer = Freezer(app)
 
 @app.route('/')
 def hello():
@@ -20,6 +22,5 @@ def solve_game():
     found_words, paths = complete_solve_game(input_str)
     return {'found_words': found_words, 'paths': paths}
 
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

@@ -1,0 +1,39 @@
+<!-- HTML for the input form -->
+<div id="form-button">
+<form id="form">
+    <label for="input">Enter a string (Answers generated when a valid grid is input):</label><br>
+    <input type="text" id="input" name="input"><br>
+    <!-- <input type="submit" value="Submit"> -->
+  </form>
+  <button id="button">Input Test String</button>
+</div>
+
+<div id="form-button">
+<form id="idx-form">
+    <label for="input">Enter a word number to find the solution for:</label><br>
+    <h1 id="current-sol"></h1>
+    <input type="number" id="idx-input" name="idx"><br>
+    <!-- <input type="submit" value="Submit"> -->
+  </form>
+  <button id="arrow-button">Test Arrows</button>
+</div>
+
+  <!-- CSS to style the grid -->
+  <link rel="stylesheet" href="/static/css/grid.css">
+  <div id="container"> 
+  <!-- HTML for the grid -->
+  <div id="grid">
+    <!-- The grid will be generated dynamically using JavaScript -->
+  </div>
+
+  <!-- HTML for the list of solutions -->
+    <div id="solutions">
+        <!-- The list of solutions will be generated dynamically using JavaScript -->
+    </div>
+</div>
+  
+  <!-- JavaScript to generate the grid based on the input string -->
+  <script src="/static/js/grid.js"></script>
+
+  
+  
