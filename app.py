@@ -2,7 +2,6 @@ from flask import Flask, render_template, request
 from functions.grid import *
 
 app = Flask(__name__)
-freezer = Freezer(app)
 
 @app.route('/')
 def hello():
