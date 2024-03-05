@@ -16,6 +16,6 @@ The website is hosted on GitHub pages, visit the link to access the website.
 
 ## Requirements
 
-Python 3
-Flask
-gunicorn
+- Python 3
+- Flask
+- gunicorn
