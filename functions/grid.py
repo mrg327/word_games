@@ -18,9 +18,12 @@ The game solver will return a list of all words found in the grid in order of le
 
 def read_words():
     '''Reads the words from the file and returns a list of words.'''
+    # Read the file
     with open("functions/all_words.txt", "r", encoding='latin-1') as f:
+        # Split the lines to a list
         words = f.read().splitlines()
-        words = [word.lower() for word in words if len(word) >= 3] 
+        # Add the words greater than langth 3 to a set
+        words = {word.lower() for word in words if len(word) >= 3}
     return words
 
 def find_words(grid, words):
@@ -60,21 +63,27 @@ def search(grid, word, row, col):
     grid[row][col] = temp # Restore the letter
     return result
 
-def complete_solve_game(input_str):
+def complete_solve_game(input_str: str):
     '''This function will solve the game and return the list of words.'''
+    # A set containing all the words 
     words = read_words()
+    # Set our input as the game board
     game_board = input_str
+    # Assuming a valid input, we will use sqrt to get the length of one side
     b_size = int(math.sqrt(len(game_board)))
+    # Create a 2D list of the game board
     grid = [list(game_board[i:i+b_size]) for i in range(0, len(game_board), b_size)]
+    # Solve the game by finding all valid words 
     found_words = find_words(grid, words)
-    # sort the list of words by length, with the longest words first
+    # Sort the list of words by length, with the longest words first
     found_words.sort(key=len, reverse=True)
 
-    # find the paths for the words
+    # Find the paths for the words
     paths = word_paths(grid, found_words)
+    # Turn the word paths into cardinal directions for rendering the HTML
     paths = decode_paths(grid, paths)
 
-    return found_words , paths
+    return found_words, paths
 
 def word_paths(grid, solutions):
     '''This function will return the input solutions list with tuples of the word and the path.'''
@@ -131,10 +140,11 @@ def search_path(grid, word, row, col, path):
         return True
     if row < 0 or row >= len(grid) or col < 0 or col >= len(grid[row]) or grid[row][col] != word[0]:
         return False
-    temp = grid[row][col] # Remember the letter
+    _temp = grid[row][col] # Remember the letter
     grid[row][col] = '.' # Mark as visited
     path.append((row, col))
 
+    # Recursive BFS
     result = search_path(grid, word[1:], row-1, col-1, path) or \
              search_path(grid, word[1:], row-1, col, path) or \
              search_path(grid, word[1:], row-1, col+1, path) or \
@@ -144,7 +154,7 @@ def search_path(grid, word, row, col, path):
              search_path(grid, word[1:], row+1, col, path) or \
              search_path(grid, word[1:], row+1, col+1, path)
     
-    grid[row][col] = temp # Restore the letter
+    grid[row][col] = _temp 
     if not result:
         path.pop()
     return result
