@@ -15,6 +15,6 @@ This project is a script that solves a 2D word game. The game is played on a squ
 The website is hosted on GitHub pages, visit the link to access the website.
 
 ## To-Do
-[] Revise the UI to look better in pure HTML
-[] Add JavaScript to make it more apetizing to the eyes 
-[] Fork the repo and rewrite the whole back end in rust
+- [] Revise the UI to look better in pure HTML
+- [] Add JavaScript to make it more apetizing to the eyes 
+- [] Fork the repo and rewrite the whole back end in rust
